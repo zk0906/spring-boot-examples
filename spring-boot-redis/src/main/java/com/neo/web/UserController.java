@@ -12,6 +12,12 @@ import java.util.UUID;
 @RestController
 public class UserController {
 
+    /**
+     * 如何在查找数据库的时候自动使用缓存？
+     * @Cacheable 自动根据方法生成缓存
+     * 其中 value 的值就是缓存到 Redis 中的 key
+     * @return
+     */
     @RequestMapping("/getUser")
     @Cacheable(value="user-key")
     public User getUser() {
@@ -21,6 +27,11 @@ public class UserController {
     }
 
 
+    /**
+     * 测试session共享  获取sessionId
+     * @param session
+     * @return
+     */
     @RequestMapping("/uid")
     String uid(HttpSession session) {
         UUID uid = (UUID) session.getAttribute("uid");

@@ -24,10 +24,12 @@
 	</properties>
 
 	<dependencies>
+		<!--spring-boot-starter ：核心模块，包括自动配置支持、日志和 YAML，如果引入了 spring-boot-starter-web web 模块可以去掉此配置，因为 spring-boot-starter-web 自动依赖了 spring-boot-starter。-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<!--测试模块，包括 JUnit、Hamcrest、Mockito。-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -39,7 +41,7 @@
 	        <optional>true</optional>
 		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<plugins>
 			<plugin>
@@ -51,6 +53,6 @@
 			</plugin>
 		</plugins>
 	</build>
-	
+
 
 </project>
