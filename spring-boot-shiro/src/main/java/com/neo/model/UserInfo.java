@@ -4,6 +4,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * 采用 Jpa 技术来自动生成基础表格，对应的实体如下：
+ */
 @Entity
 public class UserInfo implements Serializable {
     @Id

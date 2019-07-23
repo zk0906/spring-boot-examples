@@ -20,6 +20,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
+		<!--在 pom.xml-properties 中添加 Docker 镜像名称-->
 		<docker.image.prefix>springboot</docker.image.prefix>
 	</properties>
 
@@ -34,13 +35,14 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<!--plugins 中添加 Docker 构建插件：-->
 			<!-- Docker maven plugin -->
 			<plugin>
 				<groupId>com.spotify</groupId>
@@ -61,6 +63,6 @@
 			<!-- Docker maven plugin -->
 		</plugins>
 	</build>
-	
+
 
 </project>

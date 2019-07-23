@@ -17,6 +17,10 @@ public class ManyTest {
 	@Autowired
 	private NeoSender2 neoSender2;
 
+	/**
+	 * 一对多发送，一个发送者，N个接受者,经过测试会均匀的将消息发送到N个接收者中
+	 * @throws Exception
+	 */
 	@Test
 	public void oneToMany() throws Exception {
 		for (int i=0;i<100;i++){
@@ -24,6 +28,10 @@ public class ManyTest {
 		}
 	}
 
+	/**
+	 * 多对多发送  结论：和一对多一样，接收端仍然会均匀接收到消息
+	 * @throws Exception
+	 */
 	@Test
 	public void manyToMany() throws Exception {
 		for (int i=0;i<100;i++){

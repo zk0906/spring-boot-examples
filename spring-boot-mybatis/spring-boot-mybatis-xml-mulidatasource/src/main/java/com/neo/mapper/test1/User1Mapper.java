@@ -4,10 +4,13 @@ import com.neo.model.User;
 
 import java.util.List;
 
+/**
+ * dao 层和 xml 需要按照库来分在不同的目录
+ */
 public interface User1Mapper {
-	
+
 	List<User> getAll();
-	
+
 	User getOne(Long id);
 
 	void insert(User user);

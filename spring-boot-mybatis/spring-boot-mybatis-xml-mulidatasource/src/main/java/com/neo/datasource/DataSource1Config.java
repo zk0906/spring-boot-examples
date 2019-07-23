@@ -17,9 +17,12 @@ import javax.sql.DataSource;
 
 /**
  * Created by summer on 2016/11/25.
+ * 数据源配置
+ * 一个 test1 库和一个 test2 库，其中 test1 位主库，在使用的过程中必须指定主库，不然会报错。
+ * 一层一层注入,首先创建 DataSource，然后创建 SqlSessionFactory 再创建事务，最后包装到 SqlSessionTemplate 中。其中需要指定分库的 mapper 文件地址，以及分库dao层代码
  */
 @Configuration
-@MapperScan(basePackages = "com.neo.mapper.test1", sqlSessionTemplateRef  = "test1SqlSessionTemplate")
+@MapperScan(basePackages = "com.neo.mapper.test1", sqlSessionTemplateRef  = "test1SqlSessionTemplate")//这块的注解就是指明了扫描 dao 层，并且给 dao 层注入指定的 SqlSessionTemplate。所有@Bean都需要按照命名指定正确。
 public class DataSource1Config {
 
     @Bean(name = "test1DataSource")

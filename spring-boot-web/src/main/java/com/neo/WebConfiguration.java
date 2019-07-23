@@ -1,27 +1,25 @@
 package com.neo;
 
-import java.io.IOException;
-
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.catalina.filters.RemoteIpFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+
+/**
+ * Filter：用于录调用日志、排除有 XSS 威胁的字符、执行权限验证等等
+ * Spring Boot 自动添加了 OrderedCharacterEncodingFilter 和 HiddenHttpMethodFilter，并且我们可以自定义 Filter。
+ */
 @Configuration
 public class WebConfiguration {
     @Bean
     public RemoteIpFilter remoteIpFilter() {
         return new RemoteIpFilter();
     }
-    
+
     @Bean
     public FilterRegistrationBean testFilterRegistration() {
 
@@ -33,7 +31,12 @@ public class WebConfiguration {
         registration.setOrder(1);
         return registration;
     }
-    
+
+    /**
+     * 自定义Filter实现步骤
+     * 1.实现 Filter 接口，实现 Filter 方法
+     * 2.添加@Configuration 注解，将自定义Filter加入过滤链
+     */
     public class MyFilter implements Filter {
 		@Override
 		public void destroy() {
